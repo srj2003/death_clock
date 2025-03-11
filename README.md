@@ -19,7 +19,7 @@ A modern, minimalist startup page featuring a unique death clock visualization, 
 
 ## 🚀 Live Demo
 
-Visit the live demo: [Death Clock Startup Page](https://death-clock-startup.vercel.app)
+Visit the live demo: [Death Clock Startup Page](https://death-clock-startup-page.vercel.app/)
 
 ## 💻 Setup as Your Startup Page
 
@@ -27,10 +27,12 @@ Visit the live demo: [Death Clock Startup Page](https://death-clock-startup.verc
 2. In your browser settings, set the new tab/startup page to the demo URL
 3. For Chrome:
    - Settings → On Startup → Open a specific page → Add a new page
-   - Enter the demo URL
+   - Enter this url : https://death-clock-startup-page.vercel.app
+   - save your settings 
 4. For Firefox:
    - Settings → Home → Homepage and new windows → Custom URLs
-   - Enter the demo URL
+   - Enter this url : https://death-clock-startup-page.vercel.app/
+   - and save your settings
 
 ## 🛠️ Local Development
 
