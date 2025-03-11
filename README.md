@@ -23,7 +23,7 @@ Visit the live demo: [Death Clock Startup Page](https://death-clock-startup-page
 
 ## 💻 Setup as Your Startup Page
 
-1. Visit the live demo URL
+1. Visit this live url : 
 2. In your browser settings, set the new tab/startup page to the demo URL
 3. For Chrome:
    - Settings → On Startup → Open a specific page → Add a new page
