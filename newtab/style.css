@@ -6,7 +6,7 @@
 
 :root {
   --clr-bg: #0f172a;
-  --clock-size: 450px;
+  --clock-size: 500px;
   --clock-clr: rgb(12, 74, 110);
   --card-bg: rgba(255, 255, 255, 0.07);
   --text-primary: #ffffff;
@@ -38,13 +38,13 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 500px;
-  gap: 0.75rem;
+  grid-template-columns: 1fr 600px; /* Increased right section width */
+  gap: 2rem; /* Added more space between sections */
   height: 100vh;
-  max-width: 900px;
+  max-width: var(--container-width); /* Use the new wider container width */
   margin: 0 auto;
   overflow: hidden;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 }
 
 .left-section {
@@ -80,34 +80,44 @@ body {
 }
 
 .quote-section {
-  background: var(--card-bg);
-  border-radius: 1rem;
-  padding: 1rem;
-  backdrop-filter: var(--card-blur);
-  border: var(--card-border);
-  box-shadow: var(--card-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  z-index: 700;
+  margin-top: auto;
+  transform: translateX(-20px);
+  display: flex;
 }
 
 .quote-section:hover {
-  transform: translateY(-2px);
+  transform: translateX(-15px);
+  transition: transform 0.3s ease;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+.daily-quote {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border-radius: .1rem;
+  padding: 0.1rem; /* Added padding for better spacing */
+  backdrop-filter: var(--card-blur);
+  border: var(--card-border);
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  position: flex;
+  z-index: 600;
+  text-align: left; /* Ensures left alignment */
 }
 
 .quote-text {
+  margin-left: 0%;
   font-size: 0.9rem;
   line-height: 1.5;
   margin: 0;
   font-weight: 500;
   letter-spacing: 0.01em;
+  text-align: left; /* Left-aligns the text */
 }
 
 .quote-author {
   margin-top: 0.35rem;
   color: var(--text-secondary);
   font-size: 0.7rem;
+  text-align: left; /* Left-aligns the author */
 }
 
 .finance-section {
@@ -216,14 +226,16 @@ body {
   opacity: 0.8;
 }
 
+/* Right Section - Clock Container */
 .right-section {
   position: relative;
-  height: 100vh;
+  height: auto; /* Changed from 100vh to auto */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 2rem 0; /* Adjusted padding */
+  margin-top: 2rem; /* Added margin */
 }
 
 .clock-container {
@@ -232,13 +244,16 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  width: 100%;
+  max-width: 450px; /* Added max-width */
+  margin: -4rem auto 0; /* Center the clock */
 }
 
 .clock-overlay {
   position: absolute;
-  top: -160px;
-  left: 56%;
-  transform: rotate(100deg);
+  top: -140px;
+  left: 50%;
+  transform: translateX(-50%) rotate(100deg);
   width: auto;
   height: var(--clock-size);
   z-index: 25;
@@ -249,16 +264,16 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  opacity:1;
+  opacity: 1;
 }
 
 .clock-title {
   position: absolute;
-  top: -70px;
-  left: 32%;
-  transform: rotate(10deg);
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%) rotate(10deg);
   text-align: center;
-  width: 100%;
+  width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -293,13 +308,237 @@ body {
   box-shadow: var(--card-shadow);
   border-radius: 1rem;
   position: absolute;
-  bottom: -60px;
+  bottom: -80px;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   color: white;
   text-align: center;
   width: fit-content;
   white-space: nowrap;
+}
+
+/* Search Section */
+.search-section {
+  margin-bottom: 0.75rem;
+  position: relative;
+  z-index: 900;
+  width: 100%;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  max-width: 100%; /* Ensure it takes the full width of the parent */
+  height: 44px; /* Slightly taller */
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(12, 74, 110, 0.2));
+  border-radius: 1.5rem;
+  padding: 0.25rem 0.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  /* Removed margin: 0 auto; to align it to the left */
+}
+
+.search-container:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.search-engine-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  border: none;
+  padding: 0.35rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: var(--text-primary);
+  height: 32px;
+  min-width: 70px; /* Slightly wider */
+  transition: all 0.3s ease;
+}
+
+.search-engine-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.search-engine-btn img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.arrow-down {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+#search-input {
+  flex: 1;
+  height: 100%;
+  padding: 0 1.75rem 0 0.6rem;
+  font-size: 0.9rem; /* Slightly larger font size */
+  background: transparent;
+  border: none;
+  font-family: 'Plus Jakarta Sans', system-ui;
+  font-weight: 500;
+  color: white; /* Fixed issue with white text while typing */
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6); /* Subtle placeholder color */
+}
+
+#search-button {
+  position: absolute;
+  right: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  height: 33px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#search-button:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.search-engine-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 200px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.search-engine-dropdown.show {
+  display: flex;
+}
+
+.search-engine-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  height: 36px;
+}
+
+.search-engine-option:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.search-engine-option img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.search-engine-option span {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .search-container {
+    height: 36px; /* Adjusted height for smaller screens */
+    padding: 0.2rem 0.4rem;
+    max-width: 100%; /* Full width on smaller screens */
+  }
+
+  #search-input {
+    font-size: 0.95rem; /* Reduced font size */
+  }
+
+  .search-engine-btn {
+    min-width: 75px;
+    padding: 0.35rem 0.5rem;
+  }
+
+  #search-button {
+    height: 34px;
+    width: 34px;
+  }
+  .quote-text, .quote-author {
+    text-align: center; /* Center align on mobile */
+  }
+  
+  .balance-header, .finance-section {
+    padding: 0 0.5rem; /* Add some padding on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .search-container {
+    height: 40px;
+    border-radius: 1.25rem;
+  }
+
+  #search-input {
+    font-size: 0.9rem;
+    padding-right: 1.5rem;
+  }
+
+  .search-engine-btn {
+    min-width: 70px;
+    font-size: 0.8rem;
+  }
+
+  .search-engine-btn img {
+    width: 18px;
+    height: 18px;
+  }
+
+  #search-button {
+    height: 32px;
+    width: 32px;
+  }
+
+  .search-engine-dropdown {
+    min-width: 180px;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 360px) {
+  .search-container {
+    height: 38px;
+  }
+
+  #search-input {
+    font-size: 0.85rem;
+  }
+
+  .search-engine-btn {
+    min-width: 65px;
+  }
 }
 
 @media (max-width: 1400px) {
@@ -324,35 +563,33 @@ body {
 @media (max-width: 900px) {
   .container {
     grid-template-columns: 1fr;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    height: auto;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding: 0 1rem;
   }
-  
+
   .left-section {
-    height: auto;
-    overflow: visible;
-    padding: 2rem 0.5rem;
     order: 1;
+    padding: 1.5rem 0.5rem;
+    width: 100%;            /* ✅ Ensures full width */
+    align-items: stretch;   /* ✅ Aligns all child sections uniformly */
   }
-  
+
   .right-section {
-    height: auto;
-    min-height: auto;
-    padding: 1rem 0 4rem 0;
     order: 2;
-    margin-top: 2rem;
-    position: relative;
+    width: 100%;            /* ✅ Full width on mobile */
+    margin-top: 1rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
   }
-  
+
   .clock-container {
-    transform: scale(0.9);
-    transform-origin: bottom center;
-    margin-bottom: 3rem;
+    width: 100%;
+    max-width: 450px;
+    transform: scale(0.85);
+    margin: 0 auto;
+    padding-bottom: 4rem;
   }
 
   .clock-title {
@@ -363,22 +600,16 @@ body {
   }
 
   .clock-overlay {
-    top: -140px;
-    left: 50%;
-    transform: translateX(-20%) rotate(100deg);
-  }
-  
-  .countdown-timer {
-    position: fixed;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
+    top: -120px;
   }
 
-  .sound-control {
-    bottom: 1rem;
-    right: 1rem;
+  .countdown-timer {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
   }
 }
 
@@ -440,12 +671,13 @@ body {
   }
   
   .clock-container {
-    transform: scale(0.7);
-    margin-bottom: 1rem;
+    transform: scale(0.75);
+    margin: 1rem auto;
+    padding-bottom: 3rem;
   }
   
   .clock-title .title-text {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
   }
 
   .clock-title {
@@ -453,7 +685,7 @@ body {
   }
 
   .clock-overlay {
-    top: -120px;
+    top: -100px;
   }
 
   .countdown-timer {
@@ -507,26 +739,31 @@ body {
 /* seconds */
 .clock > div:nth-of-type(2) {
   --clock-d: calc(var(--clock-size) - 65px);
+  top: .8px;
   --f-size: 0.65rem;
 }
 /* minutes */
 .clock > div:nth-child(3) {
   --clock-d: calc(var(--clock-size) - 115px);
+  bottom: 0.5px;
   --f-size: 0.65rem;
 }
 /* hours */
 .clock > div:nth-child(4) {
   --clock-d: calc(var(--clock-size) - 165px);
+  top: .9px;
   --f-size: 0.65rem;
 }
 /* day numbers */
 .clock > div:nth-child(5) {
   --clock-d: calc(var(--clock-size) - 245px);
+  
   --f-size: 0.65rem;
 }
 /* month names */
 .clock > div:nth-child(6) {
   --clock-d: calc(var(--clock-size) - 305px);
+  
   --f-size: 0.6rem;
 }
 /* day names */
@@ -747,153 +984,6 @@ dialog .btn-dialog-close {
 .clock-face .number.dead {
   color: red;
   opacity: 1;
-}
-
-/* Search Section */
-.search-section {
-  margin-bottom: 0.75rem;
-  position: relative;
-  z-index: 900;
-}
-
-.search-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  width: 100%;
-  height: 34px;
-  background: var(--card-bg);
-  border-radius: 1rem;
-  padding: 0.25rem;
-  backdrop-filter: var(--card-blur);
-  border: var(--card-border);
-  box-shadow: var(--card-shadow);
-}
-
-.search-engine-select {
-  position: relative;
-  z-index: 10;
-  height: 100%;
-}
-
-.search-engine-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 0.8rem;
-  border: none;
-  backdrop-filter: var(--card-blur);
-  transition: all 0.3s ease;
-  padding: 0.35rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  color: var(--text-primary);
-  height: 100%;
-  min-width: 75px;
-}
-
-.search-engine-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.search-engine-btn img {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-}
-
-.arrow-down {
-  font-size: 0.8rem;
-  opacity: 0.7;
-}
-
-#search-input {
-  flex: 1;
-  height: 100%;
-  padding: 0 1.75rem 0 0.6rem;
-  font-size: 0.8rem;
-  background: transparent;
-  border: none;
-  font-family: 'Plus Jakarta Sans', system-ui;
-  font-weight: 500;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-#search-input:focus {
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
-}
-
-#search-button {
-  position: absolute;
-  right: 0.5rem;
-  background: transparent;
-  border: none;
-  color: var(--text-secondary);
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
-  height: 100%;
-  width: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#search-button:hover {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.search-engine-dropdown {
-  position: absolute;
-  top: calc(100% + 0.5rem);
-  left: 0;
-  background: rgba(0, 0, 0, 0.85);
-  border: var(--card-border);
-  border-radius: 1rem;
-  padding: 0.5rem;
-  display: none;
-  flex-direction: column;
-  gap: 0.25rem;
-  min-width: 200px;
-  backdrop-filter: var(--card-blur);
-  box-shadow: var(--card-shadow);
-  z-index: 1000;
-}
-
-.search-engine-dropdown.show {
-  display: flex;
-}
-
-.search-engine-option {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
-  height: 36px;
-}
-
-.search-engine-option:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.search-engine-option img {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-}
-
-.search-engine-option span {
-  color: var(--text-primary);
-  font-size: 0.9rem;
-  white-space: nowrap;
 }
 
 /* Quick Links */
@@ -1127,7 +1217,7 @@ dialog .btn-dialog-close {
 
 .goal-input::placeholder {
   color: rgba(255, 255, 255, 0.4);
-  font-style: italic;
+  
 }
 
 /* Auto-save indicator styles */
